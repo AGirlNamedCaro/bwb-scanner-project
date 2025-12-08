@@ -6,7 +6,7 @@ from bwb_scanner.models import OptionContract
 def test_create_option_contract_with_valid_data():
     option_data = {
         "symbol": "AAPL",
-        "expiry": date.date(2023, 12, 15),
+        "expiry": date(2023, 12, 15),
         "strike": 150.0,
         "type": "call",
         "dte": 30,
@@ -20,7 +20,7 @@ def test_create_option_contract_with_valid_data():
     option_contract = OptionContract(**option_data)
 
     assert option_contract.symbol == "AAPL"
-    assert option_contract.expiry == date.date(2023, 12, 15)
+    assert option_contract.expiry == date(2023, 12, 15)
     assert option_contract.strike == 150.0
     assert option_contract.type == "call"
     assert option_contract.dte == 30
@@ -34,7 +34,7 @@ def test_create_option_contract_with_valid_data():
 def test_option_contract_rejects_invalid_type():
     option_data = {
         "symbol": "AAPL",
-        "expiry": date.date(2023, 12, 15),
+        "expiry": date(2023, 12, 15),
         "strike": 150.0,
         "type": "invalid_type",
         "dte": 30,
@@ -52,7 +52,7 @@ def test_option_contract_rejects_invalid_type():
 def test_option_contract_rejects_negative_strike():
     option_data = {
         "symbol": "AAPL",
-        "expiry": date.date(2023, 12, 15),
+        "expiry": date(2023, 12, 15),
         "strike": -150.0,
         "type": "call",
         "dte": 30,
