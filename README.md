@@ -84,14 +84,13 @@ bwb-scanner-project/
 ```
 
 ## Assumptions
+1. **Single ticker and expiry**: As per requirements, the scanner processes options for a single ticker and expiry. The sample CSV contains only AAPL options, and the scanner assumes all options share the same underlying and expiration date.
 
-1. **Pre-filtered data**: The scanner assumes all options in the CSV have the same symbol, expiry, and type (all calls or all puts). Cross-symbol or mixed-type spreads are not validated.
+2. **Pre-filtered data**: The scanner assumes all options in the CSV have the same symbol, expiry, and type (all calls or all puts). Cross-symbol or mixed-type spreads are not validated.
 
-2. **CSV format**: Expected columns are: `symbol, expiry, dte, strike, type, bid, ask, mid, delta, iv`
+3. **CSV format**: Expected columns are: `symbol, expiry, dte, strike, type, bid, ask, mid, delta, iv`
 
-3. **Date format**: Expiry dates must be in `YYYY-MM-DD` format
-
-4. **Credit spreads only**: The implementation focuses on credit BWBs (net credit received on entry)
+4. **Date format**: Expiry dates must be in `YYYY-MM-DD` format
 
 5. **Score metric**: Spreads are ranked by `max_profit / max_loss` ratio. Higher is better.
 
